@@ -1,0 +1,100 @@
+Compilation
+
+    to compile, use the line:
+
+    make
+    
+    while in the A2 directory
+    
+    to delete the created .exe and .o files, use
+    
+    make clean
+
+Usage
+
+    to run the program, use the line:
+
+    ./A3 assets/template
+
+    where "assets/template" is the path to the level file
+
+    Alternatively, if using the preloaded hard/easy.txt files,
+    one can use the lines:
+    
+    make playEasy
+    make playHard
+
+
+Testing
+
+    Original A2 Testing:
+        In level file:
+            largest possible room
+                -originally caused overlap (fixed)
+            smallest possible room
+                -no problem
+            all items
+                -weak enimies in the same room would be the same (fixed)
+            double digit item locations
+                -only read first digit (fixed);
+
+        While running:
+            wall collision
+                -ran through walls (fixed)
+            enemy collision
+                -no errors
+            item collision
+                -no errors
+            door travel
+                -you would break down doors (fixed)
+            stairs
+                -you would collect them (fixed)
+            gold collection
+                -gold would not be random (fixed)
+            the randomness of gold picked up (tested to ensure an
+                 apropriate level of randomness)
+                 
+    A3 Testing:
+        Status Bar & notifications:
+            Tested with negative and edge values
+                -problems only arise if numbers become long enough to overwrite border
+            Tested all notifications
+                -originally shorter lines could leave old lines exposed (fixed)
+                -all display correct output at correct time
+        Hallways:
+            Generation is psudeo-random
+                -any wall to wall connetion will follow a similar path with slight variations
+            rooms are connected horizontally with 2 vertical conections on each end
+            Tested every combination
+            initial failure on west-west walls (fixed)
+        Inventory, Item stats and Item use:
+            Potions
+                -no errors
+            Iventory
+                -seg fault when 5 items are picked up (fixed)
+            item stats
+                -random numbers could not be appended to the end of the item string (fixed)
+        Player and Enemy stats:
+            Player stats
+                -player would not die when health < 1 (fixed)
+            Enemy Stats
+                -Aquators would not check to see if they were dead (fixed)
+        Combat:
+            Aquators would get negative health and start dealing normal damage (fixed) 
+            
+        
+
+Known Limitations
+
+    If the incorrect number of arguments or the wrong file path
+         is given, an appropriate message will be displayed and 
+         the program will exit.
+    
+    if the level file is incorrectly formatted, errors will arize
+        for example, if a level size is negative, the character
+        will be unable to move
+
+References
+    
+    tldp.org
+
